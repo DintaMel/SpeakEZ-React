@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {ButtonToolbar} from 'react-bootstrap';
 
 import $ from 'jquery';
-import './responsiveVoice/responsive-voice.js';
+import './responsive-voice.js';
 
 
 class QuestionPage extends React.Component{
