@@ -745,3 +745,5 @@ if (typeof responsiveVoice != 'undefined') {
     }
     var responsiveVoice = new ResponsiveVoice();
 }
+
+export {responsiveVoice};

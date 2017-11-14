@@ -1,21 +1,66 @@
 import React, { Component } from 'react';
 import {ButtonToolbar} from 'react-bootstrap';
 
+import {AnswerForm} from './AnswerForm.js';
+
 import $ from 'jquery';
-import './responsive-voice.js';
+import {responsiveVoice} from './responsive-voice.js';
 
 
 class QuestionPage extends React.Component{
+constructor(props){
+  super(props);
+
+
+
+  this.state = {question: 'What is your biggest strength?'}
+
+  this._readQuestion = this._readQuestion.bind(this);
+  this._randomQuestionId = this._randomQuestionId.bind(this);
+}
+
+_randomQuestionId(){
+
+  const questionList = [
+    {id: 0, question: 'Why are you interested in web development?'},
+    {id: 1, question: 'What is your biggest strength?'},
+    {id: 2, question: 'What is your biggest weakness?'},
+    {id: 3, question: 'Describe a time where you took on a leadership role.'},
+    {id: 4, question: 'Tell me about yourself.'},
+    {id: 5, question: "Describe a time where you didn't work well with another person?"}
+  ];
+
+  const min = 0;
+  var max = questionList.length;
+  var questionNum = Math.floor(Math.random() * max);
+  var newQuestion = questionList[questionNum].question;
+
+// need to bind function to itself to make recursive
+  // if(this.state.question = newQuestion){
+  //   _randomQuestionId();
+  // }
+  // else{
+    this.setState({
+        question: newQuestion
+    });
+  // }
+};
+
+_readQuestion() {
+
+  console.log(this.state.question);
+  responsiveVoice.speak(this.state.question);
+}
 
   render(){
     return(
       <div>
-        <div onClick={this._readQuestion.bind(this)} className='well text-center' id='question'>
-          What is your biggest strength?
+        <div onClick={this._readQuestion} className='well text-center' id='question' >
+          {this.state.question}
         </div>
         <div className='text-center'>
 
-          <button className='btn' id="newQuestionButton">New Question <span className='glyphicon glyphicon-arrow-right'></span></button>
+          <button className='btn' id="newQuestionButton" onClick={this._randomQuestionId}>New Question <span className='glyphicon glyphicon-arrow-right'></span></button>
           {/* Added space with JS below because React removes spacing between
             buttons and ButtonToolbar react-bootstrap class floats left*/}
           {' '}
@@ -25,14 +70,13 @@ class QuestionPage extends React.Component{
 
         </div>
 
+        <AnswerForm />
+
       </div>
     );
   }
 
-_readQuestion() {
-    console.log(this.innerText);
-    console.log('question read');
-}
+
 
 }
 

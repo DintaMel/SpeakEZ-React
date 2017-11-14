@@ -4,7 +4,6 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootstrap/dist/css/bootstrap-theme.css';
 
 import $ from 'jquery';
-import './responsive-voice.js';
 
 import React, { Component } from 'react';
 import { Navbar, Jumbotron, Button} from 'react-bootstrap';
