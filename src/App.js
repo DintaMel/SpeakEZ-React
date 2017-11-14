@@ -14,6 +14,7 @@ import{QuestionPage} from './QuestionPage.js';
 import {Footer} from './footer.js';
 
 
+
 class App extends Component {
 
 
@@ -23,6 +24,7 @@ class App extends Component {
 
         <Header />
         <QuestionPage />
+
         <Footer />
 
       </body>

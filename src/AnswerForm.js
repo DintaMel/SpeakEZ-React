@@ -5,13 +5,13 @@ import {Form, FormGroup, FormControl, ControlLabel, Col, Button} from 'react-boo
 class AnswerForm extends React.Component{
   render(){
     return(
-      <Form horizontal>
-        <FormGroup>
+      <Form horizontal className='well'>
+        <FormGroup >
           <Col componentClass={ControlLabel} sm={2}>
             Situation/Task
           </Col>
           <Col sm={10}>
-            <FormControl type='textarea' placeholder='Describe the situation or task.'/>
+            <FormControl componentClass='textarea' placeholder='Describe the situation or task.'/>
           </Col>
         </FormGroup>
 
@@ -20,7 +20,7 @@ class AnswerForm extends React.Component{
             Action
           </Col>
           <Col sm={10}>
-            <FormControl type='textarea' placeholder='What actions did you take in response to the situation?'/>
+            <FormControl componentClass='textarea' placeholder='What actions did you take in response to the situation?'/>
           </Col>
         </FormGroup>
 
@@ -29,7 +29,7 @@ class AnswerForm extends React.Component{
             Result
           </Col>
           <Col sm={10}>
-            <FormControl type='textarea' placeholder='What were the results of your actions?'/>
+            <FormControl componentClass='textarea' placeholder='What were the results of your actions?'/>
           </Col>
         </FormGroup>
         <FormGroup>

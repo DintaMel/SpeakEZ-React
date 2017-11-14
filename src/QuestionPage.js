@@ -69,9 +69,10 @@ _readQuestion() {
           <button className='btn'>Document Answer <span className='glyphicon glyphicon-pencil'></span></button>
 
         </div>
-
-        <AnswerForm />
-
+        <br/>
+        <div>
+          <AnswerForm />
+        </div>
       </div>
     );
   }
