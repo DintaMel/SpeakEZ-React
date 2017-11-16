@@ -13,10 +13,24 @@ constructor(props){
 
 
 
-  this.state = {question: 'What is your biggest strength?'}
+  this.state = {question: 'What is your biggest strength?', documentAnswerToggle: false}
 
   this._readQuestion = this._readQuestion.bind(this);
   this._randomQuestionId = this._randomQuestionId.bind(this);
+  this._documentAnswerClick = this._randomQuestionId.bind(this);
+}
+
+
+
+_documentAnswerClick(){
+  this.setState({documentAnswerToggle: !this.state.documentAnswerToggle});
+  console.log(this.state.documentAnswerToggle);
+}
+
+_readQuestion() {
+
+  console.log(this.state.question);
+  responsiveVoice.speak(this.state.question);
 }
 
 _randomQuestionId(){
@@ -46,13 +60,16 @@ _randomQuestionId(){
   // }
 };
 
-_readQuestion() {
 
-  console.log(this.state.question);
-  responsiveVoice.speak(this.state.question);
-}
+
+
 
   render(){
+    let answerDocumentForm;
+    if(this.state.documentAnswerToggle){
+      answerDocumentForm =  <AnswerForm />;
+    }
+
     return(
       <div>
         <div onClick={this._readQuestion} className='well text-center' id='question' >
@@ -66,12 +83,12 @@ _readQuestion() {
           {' '}
           <button className='btn'>Record Answer <span className='glyphicon glyphicon-record'></span></button>
           {' '}
-          <button className='btn'>Document Answer <span className='glyphicon glyphicon-pencil'></span></button>
+          <button className='btn' onClick={this._documentAnswerClick}>Document Answer <span className='glyphicon glyphicon-pencil'></span></button>
 
         </div>
         <br/>
         <div>
-          <AnswerForm />
+          {answerDocumentForm}
         </div>
       </div>
     );
