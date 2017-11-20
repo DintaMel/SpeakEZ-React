@@ -7,17 +7,32 @@ import $ from 'jquery';
 import {responsiveVoice} from './responsive-voice.js';
 
 
+const questionList = [
+  {id: 0, question: 'Why are you interested in web development?'},
+  {id: 1, question: 'What is your biggest strength?'},
+  {id: 2, question: 'What is your biggest weakness?'},
+  {id: 3, question: 'Describe a time where you took on a leadership role.'},
+  {id: 4, question: 'Tell me about yourself.'},
+  {id: 5, question: "Describe a time where you didn't work well with another person?"}
+];
+
+const min = 0;
+const max = questionList.length;
+
 class QuestionPage extends React.Component{
 constructor(props){
   super(props);
 
+  localStorage.setItem("hello", "world");
 
-
-  this.state = {question: 'What is your biggest strength?', documentAnswerToggle: false}
+  this.state = {question: 'What is your biggest strength?', readquestion: false, documentAnswerToggle: false};
 
   this._readQuestion = this._readQuestion.bind(this);
   this._randomQuestionId = this._randomQuestionId.bind(this);
-  this._documentAnswerClick = this._randomQuestionId.bind(this);
+  this._documentAnswerClick = this._documentAnswerClick.bind(this);
+
+
+
 }
 
 
@@ -28,36 +43,23 @@ _documentAnswerClick(){
 }
 
 _readQuestion() {
-
   console.log(this.state.question);
   responsiveVoice.speak(this.state.question);
-}
+  }
+
+
 
 _randomQuestionId(){
 
-  const questionList = [
-    {id: 0, question: 'Why are you interested in web development?'},
-    {id: 1, question: 'What is your biggest strength?'},
-    {id: 2, question: 'What is your biggest weakness?'},
-    {id: 3, question: 'Describe a time where you took on a leadership role.'},
-    {id: 4, question: 'Tell me about yourself.'},
-    {id: 5, question: "Describe a time where you didn't work well with another person?"}
-  ];
-
-  const min = 0;
-  var max = questionList.length;
   var questionNum = Math.floor(Math.random() * max);
   var newQuestion = questionList[questionNum].question;
 
-// need to bind function to itself to make recursive
-  // if(this.state.question = newQuestion){
-  //   _randomQuestionId();
-  // }
-  // else{
     this.setState({
         question: newQuestion
     });
-  // }
+
+    responsiveVoice.speak(newQuestion);
+
 };
 
 
@@ -68,7 +70,11 @@ _randomQuestionId(){
     let answerDocumentForm;
     if(this.state.documentAnswerToggle){
       answerDocumentForm =  <AnswerForm />;
+
     }
+
+
+
 
     return(
       <div>
