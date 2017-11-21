@@ -9,8 +9,11 @@ constructor(props){
 
   this.state = {situationValue:'', actionValue: '', resultValue: ''};
 
+
   this._submitResponse= this._submitResponse.bind(this);
   this._handleSituationChange= this._handleSituationChange.bind(this);
+  this._handleActionChange= this._handleActionChange.bind(this);
+  this._handleResultChange= this._handleResultChange.bind(this);
 
 }
 
@@ -21,6 +24,17 @@ _submitResponse(e){
 
 _handleSituationChange(e){
   this.setState({situationValue: e.target.value});
+   console.log(this.state.situationValue);
+}
+
+_handleActionChange(e){
+  this.setState({actionValue: e.target.value});
+  console.log(this.state.actionValue);
+}
+
+_handleResultChange(e){
+  this.setState({resultValue: e.target.value});
+  console.log(this.state.resultValue);
 }
 
   render(){
@@ -31,7 +45,7 @@ _handleSituationChange(e){
             Situation/Task
           </Col>
           <Col sm={10}>
-            <FormControl componentClass='textarea' value={this.state.value} onChange={this._handleSituationChange} placeholder='Describe the situation or task.'/>
+            <FormControl componentClass='textarea' value={this.state.situationValue} onChange={this._handleSituationChange} placeholder='Describe the situation or task.'/>
           </Col>
         </FormGroup>
 
@@ -40,7 +54,7 @@ _handleSituationChange(e){
             Action
           </Col>
           <Col sm={10}>
-            <FormControl componentClass='textarea' placeholder='What actions did you take in response to the situation?'/>
+            <FormControl componentClass='textarea' value={this.state.actionValue} onChange={this._handleActionChange} placeholder='What actions did you take in response to the situation?'/>
           </Col>
         </FormGroup>
 
@@ -49,7 +63,7 @@ _handleSituationChange(e){
             Result
           </Col>
           <Col sm={10}>
-            <FormControl componentClass='textarea' placeholder='What were the results of your actions?'/>
+            <FormControl componentClass='textarea' value={this.state.resultValue} onChange={this._handleResultChange} placeholder='What were the results of your actions?'/>
           </Col>
         </FormGroup>
         <FormGroup>
