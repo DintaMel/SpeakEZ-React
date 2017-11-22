@@ -31,22 +31,23 @@ constructor(props){
   this._randomQuestionId = this._randomQuestionId.bind(this);
   this._documentAnswerClick = this._documentAnswerClick.bind(this);
 
-
-
 }
-
 
 
 _documentAnswerClick(){
+
   this.setState({documentAnswerToggle: !this.state.documentAnswerToggle});
   console.log(this.state.documentAnswerToggle);
+
 }
 
+
 _readQuestion() {
+
   console.log(this.state.question);
   responsiveVoice.speak(this.state.question);
-  }
 
+  }
 
 
 _randomQuestionId(){
@@ -54,11 +55,11 @@ _randomQuestionId(){
   var questionNum = Math.floor(Math.random() * max);
   var newQuestion = questionList[questionNum].question;
 
-    this.setState({
-        question: newQuestion
-    });
+  this.setState({
+      question: newQuestion
+  });
 
-    responsiveVoice.speak(newQuestion);
+  responsiveVoice.speak(newQuestion);
 
 };
 
@@ -67,14 +68,12 @@ _randomQuestionId(){
 
 
   render(){
+
     let answerDocumentForm;
     if(this.state.documentAnswerToggle){
-      answerDocumentForm =  <AnswerForm />;
+      answerDocumentForm =  <AnswerForm question={this.state.question}/>;
 
     }
-
-
-
 
     return(
       <div>
@@ -99,9 +98,6 @@ _randomQuestionId(){
       </div>
     );
   }
-
-
-
 }
 
 export {QuestionPage};

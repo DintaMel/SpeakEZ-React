@@ -20,21 +20,25 @@ constructor(props){
 _submitResponse(e){
   e.preventDefault();
   console.log('default prevented');
+  // possibly add space to the value states so that the whole string is captured.
+  let questionResponse = {"Question": this.props.question,
+  "Situation/Task": this.state.situationValue, "Action": this.state.actionValue,
+  "Result": this.state.resultValue};
+  console.log(questionResponse);
+  questionResponse = JSON.stringify(questionResponse);
+  localStorage.setItem(1, questionResponse);
 }
 
 _handleSituationChange(e){
   this.setState({situationValue: e.target.value});
-   console.log(this.state.situationValue);
 }
 
 _handleActionChange(e){
   this.setState({actionValue: e.target.value});
-  console.log(this.state.actionValue);
 }
 
 _handleResultChange(e){
   this.setState({resultValue: e.target.value});
-  console.log(this.state.resultValue);
 }
 
   render(){
