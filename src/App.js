@@ -10,6 +10,7 @@ import React, { Component } from 'react';
 import {Header} from './Header.js';
 import {HomePage} from './Homepage.js';
 import{QuestionPage} from './QuestionPage.js';
+import{ReviewPage} from './ReviewPage.js';
 import {Footer} from './footer.js';
 
 
@@ -20,7 +21,7 @@ class App extends Component {
       <body>
 
         <Header />
-        <QuestionPage />
+        <ReviewPage />
 
         <Footer />
 
