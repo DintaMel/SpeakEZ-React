@@ -21,8 +21,7 @@ class App extends Component {
       <body>
 
         <Header />
-        <ReviewPage />
-
+        <QuestionPage />
         <Footer />
 
       </body>

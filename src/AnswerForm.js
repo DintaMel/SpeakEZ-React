@@ -2,13 +2,14 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, FormControl, ControlLabel, Col, Button} from 'react-bootstrap';
 
+var localStorageCounter = 0;
+
 class AnswerForm extends React.Component{
 
 constructor(props){
   super(props);
 
   this.state = {situationValue:'', actionValue: '', resultValue: ''};
-
 
   this._submitResponse= this._submitResponse.bind(this);
   this._handleSituationChange= this._handleSituationChange.bind(this);
@@ -18,15 +19,25 @@ constructor(props){
 }
 
 _submitResponse(e){
+  // prevents form submission and page reload
   e.preventDefault();
-  console.log('default prevented');
+
   // possibly add space to the value states so that the whole string is captured.
+  // Store response into array
   let questionResponse = {"Question": this.props.question,
   "Situation/Task": this.state.situationValue, "Action": this.state.actionValue,
   "Result": this.state.resultValue};
   console.log(questionResponse);
+
+  // takes response and puts it into JSON string format. localStorage can only handle string formats.
   questionResponse = JSON.stringify(questionResponse);
-  localStorage.setItem(1, questionResponse);
+
+  // increments ID counter for localstorage by one so that each response will have a new ID
+  localStorageCounter++;
+
+  // stores item using localStorage. Response is in JSON format.
+  localStorage.setItem(localStorageCounter, questionResponse);
+  console.log(localStorageCounter);
 }
 
 _handleSituationChange(e){

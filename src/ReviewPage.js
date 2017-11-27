@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Col} from 'react-bootstrap';
+import {Col, Well, Row} from 'react-bootstrap';
 
 
 class ReviewPage extends React.Component{
@@ -12,47 +12,47 @@ class ReviewPage extends React.Component{
 
 render(){
   return(
-    <div>
-    <div className='AnswerReviewBox well'>
-      <section className='question '>
+
+    <Well className='AnswerReviewBox'>
+      <Row className='question '>
         <Col sm={1}>
           Question:
         </Col>
         <Col sm={11}>
           What is your biggest strength?
         </Col>
-      </section>
+      </Row>
 
-      <section className='situation-response '>
-        <div>
+      <Row className='situation-response '>
+        <Col sm={1}>
           Situation/Task:
-        </div>
-        <div>
+        </Col>
+        <Col sm={11}>
           I{"'"}m detail oriented. Testing new trading system.
-        </div>
-      </section>
+        </Col>
+      </Row>
 
-      <section className='action-response '>
-        <div>
+      <Row className='action-response '>
+        <Col sm={1}>
           Action:
-        </div>
-        <div>
+        </Col>
+        <Col sm={11}>
           Looked at the whole picture instead of just the expected result.
-        </div>
-      </section>
+        </Col>
+      </Row>
 
-      <section className='result-response'>
-        <div>
+      <Row className='result-response'>
+        <Col sm={1}>
           Result:
-        </div>
-        <div>
+        </Col>
+        <Col sm={11}>
           Found more defects than anyone else on our team. Recognized by leadership
           for testing abilities. Given opportunity to lead most difficult piece part
           of 2nd phase of the project.
-        </div>
-      </section>
-    </div>
-    </div>
+        </Col>
+      </Row>
+    </Well>
+
   );
 }
 
