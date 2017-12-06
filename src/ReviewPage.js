@@ -8,47 +8,51 @@ class ReviewPage extends React.Component{
   constructor(props){
     super(props);
 
+
+
+
   }
 
-render(){
+
+
+render(
+){
   return(
 
     <Well className='AnswerReviewBox'>
-      <Row className='question '>
+      <Row className='response'>
         <Col sm={1}>
           Question:
         </Col>
         <Col sm={11}>
-          What is your biggest strength?
+          {this.props.question}
         </Col>
       </Row>
 
-      <Row className='situation-response '>
+      <Row className='response '>
         <Col sm={1}>
           Situation/Task:
         </Col>
         <Col sm={11}>
-          I{"'"}m detail oriented. Testing new trading system.
+          {this.props.situation}
         </Col>
       </Row>
 
-      <Row className='action-response '>
+      <Row className='response '>
         <Col sm={1}>
           Action:
         </Col>
         <Col sm={11}>
-          Looked at the whole picture instead of just the expected result.
+          {this.props.action}
         </Col>
       </Row>
 
-      <Row className='result-response'>
+      <Row className='response'>
         <Col sm={1}>
           Result:
         </Col>
         <Col sm={11}>
-          Found more defects than anyone else on our team. Recognized by leadership
-          for testing abilities. Given opportunity to lead most difficult piece part
-          of 2nd phase of the project.
+          {this.props.result}
         </Col>
       </Row>
     </Well>
