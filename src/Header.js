@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component{
   render(){
@@ -8,7 +9,7 @@ class Header extends React.Component{
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href='#'>SpeakEZ</a>
+            <Link to='/'><a href='#'>SpeakEZ</a></Link>
           </Navbar.Brand>
           {/*Navbar.Toggle combined with Navbar.Collapse will make Navbar
             responsive with hamburger menu on smaller screens*/}
@@ -23,13 +24,10 @@ class Header extends React.Component{
               <MenuItem eventKey={1.4}>Useful Resources</MenuItem>
             </NavDropdown>
 
-            <NavDropdown eventKey={2} title='Practice'>
-              <MenuItem eventKey={2.1}>Behavioral Interview Questions</MenuItem>
-              <MenuItem eventKey={2.2}>Technical Interview Questions</MenuItem>
-              <MenuItem eventKey={2.3}>Odd Interview Questions</MenuItem>
-            </NavDropdown>
+            <NavItem eventKey={2} title='Practice'><Link to='/QuestionPage'>
+            Practice</Link></NavItem>
 
-            <NavItem eventKey={3} href='#'>Review</NavItem>
+            <NavItem eventKey={3} href='#'><Link to='/ReviewPage'>Review</Link></NavItem>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

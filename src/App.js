@@ -7,7 +7,10 @@ import $ from 'jquery';
 
 import React, { Component } from 'react';
 
+
+
 import {Header} from './Header.js';
+import {Main} from './Main.js';
 import {HomePage} from './Homepage.js';
 import{QuestionPage} from './QuestionPage.js';
 import{ReviewPage} from './ReviewPage.js';
@@ -62,14 +65,12 @@ class App extends Component {
 // insert below  to review answers {answersArrayRender}
 // insert below to answer questions <QuestionPage/>
     return (
-      <body>
-
+      <div>
         <Header />
 
-        <QuestionPage/>
+        <Main />
         <Footer />
-
-      </body>
+      </div>
     );
   }
 }
