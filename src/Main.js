@@ -1,4 +1,4 @@
-// insert import statements later
+
 
 import $ from 'jquery';
 import React, { Component } from 'react';
@@ -10,18 +10,28 @@ import{QuestionPage} from './QuestionPage.js';
 import{ReviewPage} from './ReviewPage.js';
 
 class Main extends React.Component{
+
+  constructor(props){
+    super(props);
+
+
+
+
+  }
+
+
   render(){
     return(
       <main>
         <Switch>
           <Route exact path='/' component={HomePage}/>
           <Route path='/QuestionPage' component={QuestionPage}/>
-          <Route path='/ReviewPage' component={HomePage}/>
+          <Route path='/ReviewPage' component={ReviewPage}/>
         </Switch>
       </main>
     );
   }
 }
 
-// insert export statements later
+
 export {Main};

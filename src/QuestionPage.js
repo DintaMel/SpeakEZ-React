@@ -23,8 +23,8 @@ class QuestionPage extends React.Component{
 constructor(props){
   super(props);
 
-  localStorage.setItem("hello", "world");
 
+// I think I can remove the readquestion and documentAnswerToggle states. Need to review
   this.state = {question: 'What is your biggest strength?', readquestion: false, documentAnswerToggle: false};
 
   this._readQuestion = this._readQuestion.bind(this);

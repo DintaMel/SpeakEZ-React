@@ -1,62 +1,55 @@
 import React, {Component} from 'react';
 
-import {Col, Well, Row} from 'react-bootstrap';
+import{AnswerComponent} from './AnswerComponent.js';
 
+var localStorageCounter;
 
 class ReviewPage extends React.Component{
 
-  constructor(props){
-    super(props);
 
 
+      constructor(props){
+        super(props);
+
+        this._answersParse = this._answersParse.bind(this);
 
 
-  }
+      }
+
+      _answersParse(){
+        var answersArray = [];
+        var parsedAnswer;
+
+        for (let i = 0; i < 2; i++){
+        // for (let i = 0; i < localStorageCounter; i++){
+          parsedAnswer = JSON.parse(localStorage.getItem(i));
+          answersArray.push(parsedAnswer);
+          console.log(parsedAnswer);
+        }
+
+        console.log(answersArray);
+
+        // return(<AnswerComponent />);
+
+        return answersArray.map((answer) => {
+          return(<AnswerComponent question={answer['Question']} situation={answer['Situation']}
+          action={answer['Action']} result={answer['Result']}/>);
+        });
+
+      }
 
 
+render(){
 
-render(
-){
+  const answersArrayRender = this._answersParse();
+  this._answersParse();
+
+// paste below   {answersArrayRender}
+//   <div>Hello</div>
   return(
-
-    <Well className='AnswerReviewBox'>
-      <Row className='response'>
-        <Col sm={1}>
-          Question:
-        </Col>
-        <Col sm={11}>
-          {this.props.question}
-        </Col>
-      </Row>
-
-      <Row className='response '>
-        <Col sm={1}>
-          Situation/Task:
-        </Col>
-        <Col sm={11}>
-          {this.props.situation}
-        </Col>
-      </Row>
-
-      <Row className='response '>
-        <Col sm={1}>
-          Action:
-        </Col>
-        <Col sm={11}>
-          {this.props.action}
-        </Col>
-      </Row>
-
-      <Row className='response'>
-        <Col sm={1}>
-          Result:
-        </Col>
-        <Col sm={11}>
-          {this.props.result}
-        </Col>
-      </Row>
-    </Well>
-
+    <div>
+    {answersArrayRender}
+    </div>
   );
 }
 

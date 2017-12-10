@@ -14,6 +14,7 @@ import {Main} from './Main.js';
 import {HomePage} from './Homepage.js';
 import{QuestionPage} from './QuestionPage.js';
 import{ReviewPage} from './ReviewPage.js';
+import{AnswerComponent} from './AnswerComponent.js';
 import {Footer} from './footer.js';
 
 
@@ -28,47 +29,47 @@ class App extends Component {
     constructor(props){
       super(props);
 
-      this._answersParse = this._answersParse.bind(this);
+      // this._answersParse = this._answersParse.bind(this);
 
 
     }
 
-    _answersParse(){
-      var answersArray = [];
-      var parsedAnswer;
-
-      for (let i = 0; i < 2; i++){
-      // for (let i = 0; i < localStorageCounter; i++){
-        parsedAnswer = JSON.parse(localStorage.getItem(i));
-        answersArray.push(parsedAnswer);
-        console.log(parsedAnswer);
-      }
-
-      console.log(answersArray);
-
-      // return(<ReviewPage />);
-
-      return answersArray.map((answer) => {
-        return(<ReviewPage question={answer['Question']} situation={answer['Situation']}
-        action={answer['Action']} result={answer['Result']}/>);
-      });
-
-    }
-
+    // _answersParse(){
+    //   var answersArray = [];
+    //   var parsedAnswer;
+    //
+    //   for (let i = 0; i < 2; i++){
+    //   // for (let i = 0; i < localStorageCounter; i++){
+    //     parsedAnswer = JSON.parse(localStorage.getItem(i));
+    //     answersArray.push(parsedAnswer);
+    //     console.log(parsedAnswer);
+    //   }
+    //
+    //   console.log(answersArray);
+    //
+    //   // return(<ReviewPage />);
+    //
+    //   return answersArray.map((answer) => {
+    //     return(<AnswerComponent question={answer['Question']} situation={answer['Situation']}
+    //     action={answer['Action']} result={answer['Result']}/>);
+    //   });
+    //
+    // }
+    //
 
   render() {
-
+    //
     // const answersArrayRender = this._answersParse();
     // this._answersParse();
 
 
 // insert below  to review answers {answersArrayRender}
-// insert below to answer questions <QuestionPage/>
+// insert below to answer  <Main />
     return (
       <div>
         <Header />
 
-        <Main />
+    <Main />
         <Footer />
       </div>
     );
