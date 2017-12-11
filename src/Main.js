@@ -1,13 +1,10 @@
-
-
-import $ from 'jquery';
 import React, { Component } from 'react';
 
 import { Switch, Route } from 'react-router-dom';
 
 import {HomePage} from './Homepage.js';
-import{QuestionPage} from './QuestionPage.js';
-import{ReviewPage} from './ReviewPage.js';
+import {QuestionPage} from './QuestionPage.js';
+import {ReviewPage} from './ReviewPage.js';
 
 class Main extends React.Component{
 

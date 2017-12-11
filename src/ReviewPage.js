@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 
 import{AnswerComponent} from './AnswerComponent.js';
 
-var localStorageCounter;
-
 class ReviewPage extends React.Component{
 
 
@@ -20,21 +18,28 @@ class ReviewPage extends React.Component{
         var answersArray = [];
         var parsedAnswer;
 
-        for (let i = 0; i < 2; i++){
-        // for (let i = 0; i < localStorageCounter; i++){
-          parsedAnswer = JSON.parse(localStorage.getItem(i));
-          answersArray.push(parsedAnswer);
-          console.log(parsedAnswer);
+        var localStorageCount = localStorage.length;
+        if (localStorageCount)
+        {
+          console.log(localStorageCount);
+          // for (let i = 0; i < 3; i++){
+          for (let i = 0; i < localStorageCount; i++){
+            parsedAnswer = JSON.parse(localStorage.getItem(i));
+            answersArray.push(parsedAnswer);
+            console.log(parsedAnswer);
+          }
+
+          return answersArray.map((answer) => {
+            return(<AnswerComponent question={answer['Question']} situation={answer['Situation']}
+            action={answer['Action']} result={answer['Result']}/>);
+          });
+        }
+        else{
+          return(<div className='well'>
+            You have not documented any answers on the practice tab yet.
+          </div>);
         }
 
-        console.log(answersArray);
-
-        // return(<AnswerComponent />);
-
-        return answersArray.map((answer) => {
-          return(<AnswerComponent question={answer['Question']} situation={answer['Situation']}
-          action={answer['Action']} result={answer['Result']}/>);
-        });
 
       }
 
@@ -48,7 +53,7 @@ render(){
 //   <div>Hello</div>
   return(
     <div>
-    {answersArrayRender}
+      {answersArrayRender}
     </div>
   );
 }

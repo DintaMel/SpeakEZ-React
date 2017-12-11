@@ -63,10 +63,6 @@ _randomQuestionId(){
 
 };
 
-
-
-
-
   render(){
 
     let answerDocumentForm;
