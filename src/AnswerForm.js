@@ -22,24 +22,29 @@ _submitResponse(e){
   // prevents form submission and page reload
   e.preventDefault();
 
-  // possibly add space to the value states so that the whole string is captured.
-  // Store response into array
-  let questionResponse = {"Question": this.props.question,
-  "Situation": this.state.situationValue, "Action": this.state.actionValue,
-  "Result": this.state.resultValue};
-  console.log(questionResponse);
+  // checks to make sure all values are not blank. Some values can be blank.
+  if(this.state.situationValue && this.state.actionValue && this.state.resultValue) {
 
-  // takes response and puts it into JSON string format. localStorage can only handle string formats.
-  questionResponse = JSON.stringify(questionResponse);
+      // Store response into array
+      let questionResponse = {"Question": this.props.question,
+      "Situation": this.state.situationValue, "Action": this.state.actionValue,
+      "Result": this.state.resultValue};
+      console.log(questionResponse);
 
+      // takes response and puts it into JSON string format. localStorage can only handle string formats.
+      questionResponse = JSON.stringify(questionResponse);
 
+      // stores item using localStorage. Response is in JSON format.
+      localStorage.setItem(localStorageCounter, questionResponse);
+      console.log(localStorageCounter);
 
-  // stores item using localStorage. Response is in JSON format.
-  localStorage.setItem(localStorageCounter, questionResponse);
-  console.log(localStorageCounter);
+      // increments ID counter for localstorage by one so that each response will have a new ID
+      localStorageCounter++;
+  }
+  else{
+    alert("Please enter a response before saving.");
+  }
 
-  // increments ID counter for localstorage by one so that each response will have a new ID
-  localStorageCounter++;
 }
 
 _handleSituationChange(e){
