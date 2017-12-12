@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, FormControl, ControlLabel, Col, Button} from 'react-bootstrap';
 
-// var localStorageCounter = 0;
-
 class AnswerForm extends React.Component{
 
 constructor(props){
@@ -36,10 +34,7 @@ _submitResponse(e){
 
       // stores item using localStorage. Response is in JSON format.
       localStorage.setItem(localStorage.length, questionResponse);
-      // console.log(localStorageCounter);
 
-      // increments ID counter for localstorage by one so that each response will have a new ID
-      // localStorageCounter++;
   }
   else{
     // alerts user if all responses are blank. Does not save response.
