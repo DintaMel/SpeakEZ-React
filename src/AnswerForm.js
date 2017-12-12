@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import {Form, FormGroup, FormControl, ControlLabel, Col, Button} from 'react-bootstrap';
 
-var localStorageCounter = 0;
+// var localStorageCounter = 0;
 
 class AnswerForm extends React.Component{
 
@@ -23,7 +23,7 @@ _submitResponse(e){
   e.preventDefault();
 
   // checks to make sure all values are not blank. Some values can be blank.
-  if(this.state.situationValue && this.state.actionValue && this.state.resultValue) {
+  if(this.state.situationValue || this.state.actionValue || this.state.resultValue) {
 
       // Store response into array
       let questionResponse = {"Question": this.props.question,
@@ -35,13 +35,14 @@ _submitResponse(e){
       questionResponse = JSON.stringify(questionResponse);
 
       // stores item using localStorage. Response is in JSON format.
-      localStorage.setItem(localStorageCounter, questionResponse);
-      console.log(localStorageCounter);
+      localStorage.setItem(localStorage.length, questionResponse);
+      // console.log(localStorageCounter);
 
       // increments ID counter for localstorage by one so that each response will have a new ID
-      localStorageCounter++;
+      // localStorageCounter++;
   }
   else{
+    // alerts user if all responses are blank. Does not save response.
     alert("Please enter a response before saving.");
   }
 
