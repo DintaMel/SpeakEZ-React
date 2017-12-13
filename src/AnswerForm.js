@@ -9,11 +9,18 @@ constructor(props){
 
   this.state = {situationValue:'', actionValue: '', resultValue: ''};
 
+  this._clearForm= this._clearForm.bind(this);
   this._submitResponse= this._submitResponse.bind(this);
   this._handleSituationChange= this._handleSituationChange.bind(this);
   this._handleActionChange= this._handleActionChange.bind(this);
   this._handleResultChange= this._handleResultChange.bind(this);
 
+}
+
+_clearForm(){
+  this.setState({situationValue: ""});
+  this.setState({actionValue: ""});
+  this.setState({resultValue: ""});
 }
 
 _submitResponse(e){
@@ -35,6 +42,8 @@ _submitResponse(e){
       // stores item using localStorage. Response is in JSON format.
       localStorage.setItem(localStorage.length, questionResponse);
 
+      // reset state
+      this._clearForm();
   }
   else{
     // alerts user if all responses are blank. Does not save response.
