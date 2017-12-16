@@ -7,6 +7,10 @@ class AnswerForm extends React.Component{
 constructor(props){
   super(props);
 
+  AnswerForm.propTypes = {
+  new: React.PropTypes.func,
+  };
+
   this.state = {situationValue:'', actionValue: '', resultValue: ''};
 
   this._clearForm= this._clearForm.bind(this);
@@ -44,6 +48,9 @@ _submitResponse(e){
 
       // reset state
       this._clearForm();
+
+      this.props.new();
+
   }
   else{
     // alerts user if all responses are blank. Does not save response.

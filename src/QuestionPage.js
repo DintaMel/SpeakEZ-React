@@ -13,7 +13,15 @@ const questionList = [
   {id: 2, question: 'What is your biggest weakness?'},
   {id: 3, question: 'Describe a time where you took on a leadership role.'},
   {id: 4, question: 'Tell me about yourself.'},
-  {id: 5, question: "Describe a time where you didn't work well with another person?"}
+  {id: 5, question: "Describe a time where you didn't work well with another person."},
+  {id: 6, question: "Tell me about a time when you had to form a strong partnership with another team or department to achieve a goal."},
+  {id: 7, question: "Describe a situation when you asked for ideas or input from others, and it produced more successful results than if you had completed the project on your own."},
+  {id: 8, question: "Tell me about a time when you led a project or team of people that had to accomplish its objectives under serious time constraints."},
+  {id: 9, question: "Tell me about a time when you were working towards a goal with very little direction."},
+  {id: 10, question: "Describe a situation when you had trouble managing your work load because you were asked to complete two important tasks."},
+  {id: 11, question: "Tell me about a time when you discovered a way to improve an existing project or process."},
+  {id: 12, question: "Describe a time when you recognized a problem that others were unaware of or overlooked."},
+  {id: 13, question: "Describe a time when you had to decide between two courses of action."}
 ];
 
 const min = 0;
@@ -23,9 +31,7 @@ class QuestionPage extends React.Component{
 constructor(props){
   super(props);
 
-
-// I think I can remove the readquestion and documentAnswerToggle states. Need to review
-  this.state = {question: 'What is your biggest strength?', readquestion: false, documentAnswerToggle: false};
+  this.state = {question: 'What is your biggest strength?',  documentAnswerToggle: false};
 
   this._readQuestion = this._readQuestion.bind(this);
   this._randomQuestionId = this._randomQuestionId.bind(this);
@@ -67,7 +73,7 @@ _randomQuestionId(){
 
     let answerDocumentForm;
     if(this.state.documentAnswerToggle){
-      answerDocumentForm =  <AnswerForm question={this.state.question}/>;
+      answerDocumentForm =  <AnswerForm question={this.state.question} new={this._randomQuestionId}/>;
 
     }
 
