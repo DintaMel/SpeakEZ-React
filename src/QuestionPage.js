@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {ButtonToolbar} from 'react-bootstrap';
 
 import {AnswerForm} from './AnswerForm.js';
+import {RecordAnswer} from './RecordAnswer.js'
 
 import $ from 'jquery';
 import {responsiveVoice} from './responsive-voice.js';
@@ -31,12 +32,12 @@ class QuestionPage extends React.Component{
 constructor(props){
   super(props);
 
-  this.state = {question: 'What is your biggest strength?',  documentAnswerToggle: false};
+  this.state = {question: 'What is your biggest strength?',  documentAnswerToggle: false, recordAnswerToggle: false};
 
   this._readQuestion = this._readQuestion.bind(this);
   this._randomQuestionId = this._randomQuestionId.bind(this);
   this._documentAnswerClick = this._documentAnswerClick.bind(this);
-
+  this._recordAnswerClick = this._recordAnswerClick.bind(this);
 }
 
 
@@ -47,6 +48,11 @@ _documentAnswerClick(){
 
 }
 
+_recordAnswerClick(){
+
+  this.setState({recordAnswerToggle: !this.state.recordAnswerToggle});
+
+}
 
 _readQuestion() {
 
@@ -74,7 +80,11 @@ _randomQuestionId(){
     let answerDocumentForm;
     if(this.state.documentAnswerToggle){
       answerDocumentForm =  <AnswerForm question={this.state.question} new={this._randomQuestionId}/>;
+    }
 
+    let recordAnswerDisplay;
+    if(this.state.recordAnswerToggle){
+      recordAnswerDisplay =  <RecordAnswer />;
     }
 
     return(
@@ -88,12 +98,15 @@ _randomQuestionId(){
           {/* Added space with JS below because React removes spacing between
             buttons and ButtonToolbar react-bootstrap class floats left*/}
           {' '}
-          <button className='btn'>Record Answer <span className='glyphicon glyphicon-record'></span></button>
+          <button className='btn' onClick={this._recordAnswerClick}>Record Answer <span className='glyphicon glyphicon-record'></span></button>
           {' '}
           <button className='btn' onClick={this._documentAnswerClick}>Document Answer <span className='glyphicon glyphicon-pencil'></span></button>
 
         </div>
         <br/>
+        <div>
+          {recordAnswerDisplay}
+        </div>
         <div>
           {answerDocumentForm}
         </div>
